@@ -1,26 +1,24 @@
 # Site settings
-name: Brittany Chiang
-title: Brittany Chiang | Front End Software Engineer
-description: Design-minded front-end software engineer focused on building beautiful interfaces and experiences
-url: https://brittanychiang.com/
+name: Logesh Kumar Umapathi
+title: Logesh Kumar Umapathi | Data Scientist
+description: Data Scientist specializing in NLP, Deep learning and Machine learning.
+url: https://logeshumapathi.com/
 baseurl: ""
-email: brittany.chiang@gmail.com
-cover: https://brittanychiang.com/img/og.png
-logo: https://brittanychiang.com/img/emojis/technologist.png
-resume: https://brittanychiang.com/resume.pdf
+email: logeshkumaru@gmail.com
+cover: https://logeshumapathi.com/img/og.png
+logo: https://logeshumapathi.com/img/emojis/technologist.png
+resume: https://logeshumapathi.com/resume.pdf
 social:
   - title: email
-    url: mailto:brittany.chiang@gmail.com
+    url: mailto:logeshkumaru@gmail.com
   - title: twitter
-    url: https://twitter.com/bchiang7
+    url: https://twitter.com/logesh_umapathi
   - title: instagram
-    url: https://instagram.com/bchiang7
-  - title: codepen
-    url: http://codepen.io/bchiang7
+    url: https://www.instagram.com/madeinmadras_/
   - title: github
-    url: https://github.com/bchiang7
+    url: https://github.com/infinitylogesh/
   - title: linkedin
-    url: https://www.linkedin.com/in/bchiang7
+    url: https://www.linkedin.com/in/logeshkumaru
 
 # Build settings
 markdown: kramdown
