@@ -1,0 +1,18 @@
+<section class="section other-projects">
+  <div class="section__title">Talks</div>
+  <div class="section__content">
+    {% for talk in site.data.talks %}
+    <div class="project">
+      <div class="project__name">
+        <a href="{{talk.url}}" target="_blank" class="arrow-link">{{talk.name}}</a>
+      </div>
+      <p>{{talk.description}}</p>
+      <div class="project__used">
+        {% for item in talk.used %}
+        <span class="project__used__item">{{item.thing}}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

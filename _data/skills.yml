@@ -1,0 +1,35 @@
+languages:
+  - item: Python
+  - item: Javascript
+  - item: Scala
+  - item: HTML
+  - item: CSS
+
+
+frameworks:
+  - item: Tensorflow
+  - item: Sklearn
+  - item: Node
+  - item: Apache Spark
+
+tools:
+  - item: Bash
+  - item: Git & Github
+  - item: Chrome DevTools
+  - item: Postman
+
+ops:
+ - item: AWS Sagemaker
+ - item: API Dev & Management
+ - item: Lambda
+ - item: Circle CI
+ - item: Docker
+ - item: EC2
+
+design:
+  - item: Sketch
+  - item: InDesign
+  - item: InVision
+  - item: Prototyping
+  - item: Wireframing
+  - item: User Testing

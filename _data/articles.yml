@@ -1,0 +1,35 @@
+- name: A Visual intuition of Bayes rule
+  url: https://medium.com/@infinitylogesh/a-visual-intuition-of-bayes-rule-149b48f76608
+  code: https://medium.com/@infinitylogesh/a-visual-intuition-of-bayes-rule-149b48f76608
+  description: Article exploring visual intuition of bayes rule.
+  used:
+    - thing: Python
+    - thing: Keras
+    - thing: Tensorflow
+
+- name: A Handy pre-trained model for language Identification [ Featured in Becominghuman.ai ]
+  url: https://becominghuman.ai/a-handy-pre-trained-model-for-language-identification-cadd89db9db8
+  code: https://becominghuman.ai/a-handy-pre-trained-model-for-language-identification-cadd89db9db8
+  description: Article featured in Becominghuman.ai on using a language identifcation model.
+  used:
+    - thing: Python
+    - thing: Deep learning
+    - thing: Tensorflow
+
+- name: Mistakes to avoid in your tensorflow model
+  url: https://medium.com/made-in-madras/mistakes-to-avoid-in-your-tensorflow-model-79a6c9cf54c
+  code: https://medium.com/made-in-madras/mistakes-to-avoid-in-your-tensorflow-model-79a6c9cf54c
+  description: Article briefing common mistakes that are to be avoided in a tensorflow model.
+  used:
+    - thing: Python
+    - thing: Deep learning
+    - thing: Tensorflow
+
+- name: Building an AWS lambda service to return binary data (image) as a response without Access header.
+  url: https://medium.com/made-in-madras/building-an-aws-lambda-service-to-return-binary-data-image-as-a-response-without-access-header-d991fb1d7b56
+  code: https://medium.com/made-in-madras/building-an-aws-lambda-service-to-return-binary-data-image-as-a-response-without-access-header-d991fb1d7b56
+  description: Article describing a workaround solution to return binary data from lambda service.
+  used:
+    - thing: Python
+    - thing: Deep learning
+    - thing: Tensorflow

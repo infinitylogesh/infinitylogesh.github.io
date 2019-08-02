@@ -1,0 +1,8 @@
+- name: Realities of AI/ML
+  url: https://drive.google.com/file/d/0B1-ZJnmJGxakVmlnX2xldU1pcmFmYUdoeFBieDBoQmZ2UDlZ/view?usp=sharing
+  code: https://drive.google.com/file/d/0B1-ZJnmJGxakVmlnX2xldU1pcmFmYUdoeFBieDBoQmZ2UDlZ/view?usp=sharing
+  description: A talk focussing on the realities of ML and its biases. Cutting through the hype
+  used:
+    - thing: Machine learning
+    - thing: Biases
+    - thing: Adversarial
