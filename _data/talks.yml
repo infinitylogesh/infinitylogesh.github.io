@@ -6,8 +6,8 @@
     - thing: Machine learning
     - thing: Biases
     - thing: Adversarial
-    
-- name: "Get your feet wet with ML" at GDG CBE DevFest'19
+
+- name: "'Get your feet wet with ML' at GDG CBE DevFest'19"
   url: https://docs.google.com/presentation/d/1e5RW_hmXJzYhMOVbpmgNiWe3nJzinWVdOdTPP9cGIAk/edit?usp=sharing
   code: https://colab.research.google.com/drive/1sxgaDUgzsHjmqeTmQS6ED_Z5TiA8xSHv
   description: A talk and Demo on how to get started in ML and build a quick prototype. 
