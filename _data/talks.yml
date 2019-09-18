@@ -15,3 +15,12 @@
     - thing: Machine learning
     - thing: Deep learning
     - thing: Colab
+
+- name: "'[Upcoming] Decoding state-of-the-art NLP models at DataHack Summit 2019"
+  url: https://www.analyticsvidhya.com/datahack-summit-2019/schedule/hack-session-decoding-state-of-the-art-nlp-models/
+  code: https://www.analyticsvidhya.com/datahack-summit-2019/schedule/hack-session-decoding-state-of-the-art-nlp-models/
+  description: This hack session would include the techniques that can be used to interpret the decisions of RNNs, LSTMs and Transformer models. 
+  used:
+    - thing: Transformers
+    - thing: Deep learning
+    - thing: NLP
