@@ -1,3 +1,11 @@
+- name: What does a Fine-tuned BERT model look at?
+  url: https://medium.com/@infinitylogesh/a-visual-intuition-of-bayes-rule-149b48f76608
+  code: https://github.com/infinitylogesh/Interpretable-NLP-Talk
+  description: An attempt to understand features and patterns learnt by a Fine-tuned BERT model
+  used:
+    - thing: ABSA
+    - thing: transformers
+    - thing: BERT
 - name: A Visual intuition of Bayes rule
   url: https://medium.com/@infinitylogesh/a-visual-intuition-of-bayes-rule-149b48f76608
   code: https://medium.com/@infinitylogesh/a-visual-intuition-of-bayes-rule-149b48f76608
