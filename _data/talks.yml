@@ -1,3 +1,22 @@
+- name: "Decoding state-of-the-art NLP models at DataHack Summit 2019"
+  url:https://www.conf42.com/Machine_Learning_2023_Logesh_Kumar_Umapathi_reasoning_planning_abilities_language_models 
+  code:
+  description: we will explore the latest breakthroughs and discuss how LLMs can be used to solve complex problems that require reasoning and planning. By unlocking these capabilities, LLMs can be used to build sophisticated chatbots, intelligent assistants, and other NLP applications- 
+  used:  
+    - thing: Reasoning
+    - thing: Large language models
+    - thing: NLP
+    - thing: Prompt engineering
+
+- name: "Decoding state-of-the-art NLP models at DataHack Summit 2019"
+  url: https://www.analyticsvidhya.com/datahack-summit-2019/schedule/hack-session-decoding-state-of-the-art-nlp-models/
+  code: https://github.com/infinitylogesh/Interpretable-NLP-Talk
+  description: This hack session would include the techniques that can be used to interpret the decisions of RNNs, LSTMs and Transformer models. 
+  used:
+    - thing: Transformers
+    - thing: Deep learning
+    - thing: NLP
+
 - name: Realities of AI/ML
   url: https://drive.google.com/file/d/0B1-ZJnmJGxakVmlnX2xldU1pcmFmYUdoeFBieDBoQmZ2UDlZ/view?usp=sharing
   code: https://drive.google.com/file/d/0B1-ZJnmJGxakVmlnX2xldU1pcmFmYUdoeFBieDBoQmZ2UDlZ/view?usp=sharing
@@ -15,12 +34,3 @@
     - thing: Machine learning
     - thing: Deep learning
     - thing: Colab
-
-- name: "Decoding state-of-the-art NLP models at DataHack Summit 2019"
-  url: https://www.analyticsvidhya.com/datahack-summit-2019/schedule/hack-session-decoding-state-of-the-art-nlp-models/
-  code: https://github.com/infinitylogesh/Interpretable-NLP-Talk
-  description: This hack session would include the techniques that can be used to interpret the decisions of RNNs, LSTMs and Transformer models. 
-  used:
-    - thing: Transformers
-    - thing: Deep learning
-    - thing: NLP

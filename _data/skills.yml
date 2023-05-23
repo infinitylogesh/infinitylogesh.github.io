@@ -8,9 +8,10 @@ languages:
 
 frameworks:
   - item: Pytorch
+  - item: Transformers
   - item: Tensorflow
   - item: Sklearn
-  - item: Node
+  - item: langchain
   - item: Apache Spark
 
 tools:
@@ -23,14 +24,9 @@ ops:
  - item: AWS Sagemaker
  - item: API Dev & Management
  - item: Lambda
- - item: Circle CI
+ - item: Apache Airflow
  - item: Docker
  - item: EC2
 
 design:
   - item: Sketch
-  - item: InDesign
-  - item: InVision
-  - item: Prototyping
-  - item: Wireframing
-  - item: User Testing
