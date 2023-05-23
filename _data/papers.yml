@@ -1,0 +1,26 @@
+- name: MedMCQA: A large-scale multi-subject multi-choice dataset for medical domain question answering 
+  url: https://arxiv.org/abs/2203.14371 
+  code: https://github.com/medmcqa/medmcqa 
+  description: A large-scale (194k), Multiple-Choice Question Answering (MCQA) dataset designed to address realworld medical entrance exam questions.
+  used:
+    - thing: Biomedical NLP
+    - thing: Open domain Question answering
+    - thing: Benchmark
+
+- name: StarCoder: may the source be with you!
+  url:  https://arxiv.org/abs/2305.06161  
+  code: https://github.com/bigcode-project/starcoder
+  description: A 15.5B StarCoder is a language model (LM) trained on source code and natural language text
+  used:
+    - thing: Code generation
+    - thing: LLMs
+    - thing: Open source
+
+- name: SantaCoder: don't reach for the stars!
+  url: https://arxiv.org/abs/2301.03988 
+  code: NA
+  description: A 1.1B parameter models for Java, JavaScript, and Python code generation
+  used:
+    - thing: Code generation
+    - thing: LLMs
+    - thing: Open source
