@@ -1,3 +1,12 @@
+- name: How to do more with less data ?— Active learning
+  url: https://towardsdatascience.com/how-to-do-more-with-less-data-active-learning-239ffe1f7cb9 
+  code: https://github.com/infinitylogesh/Interpretable-NLP-Tal://colab.research.google.com/drive/1BsTuFK8HcXS5WWlOCS1QHgvHRf2FK6aD?usp=sharing 
+  description: The intent of this article is to introduce you to a simple active learning method called ‘Uncertainty sampling with entropy’ and demonstrate its usefulness with an example. 
+  used:
+    - thing: Active learning
+    - thing: transformers
+    - thing: BERT
+
 - name: What does a Fine-tuned BERT model look at?
   url: https://medium.com/@infinitylogesh/a-visual-intuition-of-bayes-rule-149b48f76608
   code: https://github.com/infinitylogesh/Interpretable-NLP-Talk

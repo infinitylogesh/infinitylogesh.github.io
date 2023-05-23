@@ -1,5 +1,5 @@
-- name: "Decoding state-of-the-art NLP models at DataHack Summit 2019"
-  url:https://www.conf42.com/Machine_Learning_2023_Logesh_Kumar_Umapathi_reasoning_planning_abilities_language_models 
+- name: "Unlocking reasoning and planning abilities in Large language models"
+  url: https://www.conf42.com/Machine_Learning_2023_Logesh_Kumar_Umapathi_reasoning_planning_abilities_language_models 
   code:
   description: we will explore the latest breakthroughs and discuss how LLMs can be used to solve complex problems that require reasoning and planning. By unlocking these capabilities, LLMs can be used to build sophisticated chatbots, intelligent assistants, and other NLP applications- 
   used:  
