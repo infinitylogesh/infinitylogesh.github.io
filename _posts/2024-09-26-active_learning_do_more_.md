@@ -2,7 +2,7 @@
 layout: category-post
 title:  "How to do more with less data ?— Active learning"
 date:   2020-09-26
-categories: writing
+categories: blog
 ---
 
 ![hero](https://miro.medium.com/v2/resize:fit:720/format:webp/0*gRCw9OD-7RnMUq69)

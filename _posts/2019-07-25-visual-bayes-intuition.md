@@ -2,7 +2,7 @@
 layout: category-post
 title:  "A Visual intuition of Bayes Rule"
 date:   2019-07-25
-categories: writing
+categories: blog
 ---
 
 

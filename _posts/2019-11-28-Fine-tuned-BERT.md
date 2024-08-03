@@ -2,7 +2,7 @@
 layout: category-post
 title:  "What does a Fine-tuned BERT model look at ?."
 date:   2019-11-28
-categories: writing
+categories: blog
 ---
 
 

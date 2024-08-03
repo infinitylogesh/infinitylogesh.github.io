@@ -2,7 +2,7 @@
 layout: category-post
 title:  "A Handy pre-trained model for language Identification"
 date:   2019-03-17
-categories: writing
+categories: blog
 ---
 
 

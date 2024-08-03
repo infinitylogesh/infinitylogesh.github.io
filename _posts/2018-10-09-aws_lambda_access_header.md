@@ -2,7 +2,7 @@
 layout: category-post
 title:  "Building an AWS lambda service to return binary data (image) as a response without Access header."
 date:   2018-10-09
-categories: writing
+categories: blog
 ---
 
 

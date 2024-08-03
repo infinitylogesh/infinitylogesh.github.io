@@ -2,7 +2,7 @@
 layout: category-post
 title:  "Agent Interfaces: Bridging LLMs and Software Engineering"
 date:   2024-08-03
-categories: writing
+categories: blog
 ---
 
 It is well-established that LLMs are effective at coding and with the ongoing advancement in their code refinement abilities with execution feedback and increasing context length, coupled with decreasing costs. it is becoming apparent that LLMs will play a significant role in software development and likey to surpass human contribution.
