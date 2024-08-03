@@ -1,10 +1,10 @@
 ---
 layout: page
-title: About
+title: Hello!
 permalink: /about/
 ---
 
-A simple and elegant theme for Jekyll and GitHub Pages.
+I am Logesh Kumar Umapathi , a Lead ML Engineer specializing in NLP, Deep learning and Machine learning. I build intelligent applications &amp; experiences from ground up
 
 ### Features:
 * Mobile-first design ensures this theme performs fastest on mobile while scaling elegantly to desktop-size screens.
