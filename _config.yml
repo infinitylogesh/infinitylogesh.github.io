@@ -13,8 +13,8 @@
 # you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Athena Jekyll Theme
-description: A simple and elegant theme for Jekyll and GitHub Pages.
+title: Logesh Kumar Umapathi
+description: I am a ML Engineer specializing in NLP, Deep learning and Machine learning. I build intelligent applications &amp; experiences from ground up.
 # baseurl: "/athena" # the subpath of your site, e.g. /blog
 url: "https://infinitylogesh.github.io" # the base hostname & protocol for your site
 github_repo: athena # the GitHub repo name for your project
