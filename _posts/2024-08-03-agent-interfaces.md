@@ -205,7 +205,7 @@ In conclusion, here are some of the open challenges or limiting factors for the 
   journal = "logeshumapathi.com",
   year    = "2024",
   month   = "Aug",
-  url     = "https://logeshumapathi.com/writing/2024/08/03/agent-interfaces.html"
+  url     = "https://logeshumapathi.com/blog/2024/08/03/agent-interfaces.html"
 }
 ```
 
