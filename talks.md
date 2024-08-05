@@ -11,7 +11,11 @@ Some of my notable Talks:
 
 - [Unlocking reasoning and planning abilities in Large language models](https://www.conf42.com/Machine_Learning_2023_Logesh_Kumar_Umapathi_reasoning_planning_abilities_language_models) -  CONF42 2023
 
-- [Decoding state-of-the-art NLP models at DataHack Summit 2019](ttps://www.analyticsvidhya.com/datahack-summit-2019/schedule/hack-session-decoding-state-of-the-art-nlp-models/) - Analytics Vidhya's - DataHack summit 2019
+- [Decoding state-of-the-art NLP models at DataHack Summit 2019](https://www.analyticsvidhya.com/datahack-summit-2019/schedule/hack-session-decoding-state-of-the-art-nlp-models/) - Analytics Vidhya's - DataHack summit 2019
+
+- [Get your feet wet with ML](https://docs.google.com/presentation/d/1e5RW_hmXJzYhMOVbpmgNiWe3nJzinWVdOdTPP9cGIAk/edit?usp=sharing) - Google developer group CBE DevFest 2019. [[code](https://colab.research.google.com/drive/1sxgaDUgzsHjmqeTmQS6ED_Z5TiA8xSHv)]
+
+- [Realities of AI/ML](https://drive.google.com/file/d/0B1-ZJnmJGxakVmlnX2xldU1pcmFmYUdoeFBieDBoQmZ2UDlZ/view?usp=sharing)
 
 
 
