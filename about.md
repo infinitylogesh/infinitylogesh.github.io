@@ -11,6 +11,10 @@ I have been part of notable Code LLM research including [Starcoder](https://arxi
 
 When I'm not in front of a computer screen , I would love to speak at ML events. I also love reading books and photography.
 
+My socials: [![LinkedIn Profile](https://img.shields.io/badge/-LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/{{ site.linkedin_username }})
+[![Twitter Profile](https://img.shields.io/badge/-Twitter-1DA1F2?style=flat-square&logo=twitter&logoColor=white)](https://twitter.com/{{ site.twitter_username }})
+
+
 ------------------
 
 ## Technologies
