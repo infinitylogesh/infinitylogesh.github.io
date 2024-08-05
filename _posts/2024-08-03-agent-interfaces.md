@@ -5,9 +5,9 @@ date:   2024-08-03
 categories: blog
 ---
 
-It is well-established that LLMs are effective at coding and with the ongoing advancement in their code refinement abilities with execution feedback and increasing context length, coupled with decreasing costs. it is becoming apparent that LLMs will play a significant role in software development and likey to surpass human contribution.
+It is well-established that LLMs are useful at coding. With the ongoing advancement in their code refinement abilities with execution feedback, and increasing context length, coupled with decreasing costs,it is becoming apparent that LLMs will play a significant role in software development and likey to surpass human contribution.
 
-Having said that, software development is complex and involves many aspects that LLMs still struggle with, like effectively solving repository level tasks , using and integrating with our existing workflows and tooling. 
+Having said that, software development is complex and involves many aspects that LLMs still struggle with, like effectively solving repository level tasks, collaboration,  using and integrating with our existing workflows and tooling. 
 
 Just as [syntax highlighting , code completions , tool tips with code hints , linting](https://code.visualstudio.com/docs/editor/intellisense) in an IDE help improve coding efficiency for humans, interfaces purpose built for agents would help improve the coding success rate of LLMs.  These interfaces decide how a code context or an execution output context can be shared with LLMs effectively for their usage. These interfaces are a step towards bridging the gap in current abilities of LLMs in completing SWE tasks. 
 
@@ -125,7 +125,7 @@ The next step after localisation is to generate a code change to fix or add a ne
 
     ![Sample edit command from SWE-AGENT, the line 1475 in the code file is replaced with the code in the command]({{ site.baseurl }}/assets/images/patch_edit.png)
 
-    Sample edit command from SWE-AGENT, the line 1475 in the code file is replaced with the code in the command
+    <p style="font-size: medium;"><em>Sample edit command from SWE-AGENT, the line 1475 in the code file is replaced with the code in the command</em></p>
 
     This method is efficient in terms of token usage and could also lead to a higher success rate of edits getting executed. But it also leads to some of the common failure modes:
 
@@ -186,7 +186,7 @@ The next step after localisation is to generate a code change to fix or add a ne
 
     ![Example of a file viewer shown after file edit with a prompt to followup with further actions on edit mistakes]({{ site.baseurl }}/assets/images/post_edit.png)
 
-    Example of a file viewer shown after file edit with a prompt to followup with further actions on edit mistakes
+    <p style="font-size: medium;"><em>Example of a file viewer shown after file edit with a prompt to followup with further actions on edit mistakes</em></p>
 
 ## Open challenges:
 
@@ -216,3 +216,4 @@ In conclusion, here are some of the open challenges or limiting factors for the 
 - Yang et al. 2024. ["SWE-Agent: Agent-Computer Interfaces Enable Automated Software Engineering"](https://arxiv.org/abs/2405.15793)
 - Wang et al. 2024. ["OpenDevin: An Open Platform for AI Software Developers as Generalist Agents."](https://arxiv.org/abs/2407.16741)
 - Zhang et al. 2024. ["AutoCodeRover: Autonomous Program Improvement"](https://arxiv.org/abs/2404.05427)
+- ["RepoPilot: Multi-Agent Coding Assistant that Understand Your Codebase"](https://github.com/FSoft-AI4Code/RepoPilot)
