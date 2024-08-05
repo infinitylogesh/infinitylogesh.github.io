@@ -14,4 +14,37 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <style>
+    .toc-fixed {
+      position: fixed;
+      top: 100px; /* Adjust the top position as needed with "px" units */
+      left: 50px ; /* Adjust the left position as needed with "px" units and use !important if necessary */
+      width: 250px; /* Adjust the width as needed */
+      background-color:transparent; /* Add a background color */
+    }
+    #toc > .toc-list {
+        position: relative;
+        /*to add :  text niet onderstrepen. */
+        text-decoration: none; /* Remove underlines from TOC links */
+
+    }
+    #toc a {
+      text-decoration: none; /* Remove text underlines */
+      border-bottom: none !important; /* Remove the border-bottom property */
+    }
+    .toc-list {
+        overflow: hidden;
+        list-style: none;
+    }
+    
+    @media screen and (max-width: 600px) {
+      .toc-fixed {
+        visibility: hidden;
+        display: none;
+      }
+    }
+  </style>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.10.0/tocbot.css" />
 </head>

@@ -5,12 +5,38 @@
   
   <!-- font-smoothing is only applied on dark themes -->
   <body class="font-smoothing">
+    <div class="wrapper">
+    {% if page.url != "/about.html" and page.url != "/blog/" %}
+      <!-- BEGIN TOC -->
+      <aside class="toc-fixed">
+        <nav id="toc"></nav>
+      </aside> 
+    {% endif %}
 
+      <!-- END TOC -->
     {% include header.html %}
 
     <div>
       {{ content }}
     </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js"></script>      
+  {% if page.url != "/about.html" and page.url != "/blog/" %}
+
+    <script>
+      // Configuration options
+      var tocbotConfig = {
+        tocSelector: '#toc',
+        contentSelector: 'article',
+        headingSelector: 'h1,h2,h3,h4',
+        smoothScroll: true,
+        hasInnerContainers: true
+      };
+
+      // Initialize tocbot with the configuration
+      tocbot.init(tocbotConfig);
+    </script>
+    {% endif %}
 
     {% include footer.html %}
 
