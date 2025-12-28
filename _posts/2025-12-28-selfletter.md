@@ -33,6 +33,11 @@ I hope this will at least give me an overview of the list and help me cover its 
 
 I wanted to keep it simple without requiring any babysitting and also to be cheaper to run. Here is a breakdown of the system:
 
+<div style="text-align: center;">
+<img src="{{ site.baseurl }}/assets/images/flow_diagram.png">
+<p style="font-size: medium;"><em>simple sketch of the workflow</em></p>
+</div>
+
 - The system is a repository on GitHub - [Selfletter](https://github.com/infinitylogesh/selfletter).
 - A GitHub Action is scheduled on the repo to run every morning to fetch the content from the lists I added the day before and send the newsletter to my email as a single digest after the summarisation and collation are done.
 - It has an initial list of data processors to fetch content from:
