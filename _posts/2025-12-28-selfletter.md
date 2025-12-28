@@ -11,7 +11,7 @@ categories: blog
 
 ### The problem
 
-I have been maintaining a reading list in a Notion database <i>(my first brain)</i> for a few years . I clip/add any resources that I want to read to this list from my browser/phone. The goal is to have a quick way to collect resources without getting distracted by going too deeply into any particular one. 
+I have been maintaining a reading list in a Notion database <i>(my first brain)</i> for a few years now . I clip/add any resources that I want to read to this list from my browser/phone. The goal is to have a quick way to collect resources without getting distracted by going too deeply into any particular one.
 
 This system works well if I read through all the resources I added the day before on the next day. But as you have guessed by now, this doesn’t always happen, and now I am in a situation where the reading list has 2000 resources to read.
 
