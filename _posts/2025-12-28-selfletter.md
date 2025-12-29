@@ -4,7 +4,7 @@ title:  "Selfletter: Why I Built a Newsletter for One (Me)"
 date:   2025-12-28
 categories: blog
 ---
-> TLDR: I struggle with keeping pace with the latest research in AI. My latest attempt at tackling this is to have an automated newsletter sent to me with the summaries of interesting research resources that I added to my reading list the day before. <i>(Because apparently my coping mechanism is “add more automation,” not “read the papers.”)</i>
+> TLDR: I struggle with keeping pace with the latest AI research. My latest attempt at tackling this is to have an automated newsletter sent to me with the summaries of interesting research resources that I added to my reading list the day before. <i>(Because apparently my coping mechanism is “add more automation,” not “read the papers.”)</i>
 > 
 > An example [newsletter](https://github.com/infinitylogesh/selfletter/blob/main/examples/daily-newsletter.md). I detail my process in this post.
 > 
