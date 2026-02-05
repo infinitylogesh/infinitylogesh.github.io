@@ -35,6 +35,7 @@ theme_color: light
 
 plugins:
   - jekyll-toc
+  - jekyll-feed
 
 # Build settings
 markdown: kramdown
