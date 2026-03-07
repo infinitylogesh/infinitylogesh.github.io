@@ -4,7 +4,7 @@ title:  "Introducing Vaan: Bringing the power of multimodal LLMs to the real wor
 date:   2026-03-06
 categories: blog
 ---
-<video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/elderly_falling_edited_v1.mp4" autoplay loop muted playsinline controls preload="metadata" width="800rem"></video>
+<video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/elderly_falling_edited_v1.mp4" autoplay loop muted playsinline controls preload="metadata" class="hero-demo-video"></video>
 <figcaption style="text-align: center;">Vaan alerts when a person / elderly falls down. Query: "Alert me if you see people falling down"</figcaption>
 
 <div class="hero-links">

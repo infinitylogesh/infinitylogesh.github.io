@@ -231,6 +231,15 @@ code {
     cursor: zoom-in;
   }
 
+  .hero-demo-video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
   .hero-links {
     display: flex;
     flex-wrap: wrap;
