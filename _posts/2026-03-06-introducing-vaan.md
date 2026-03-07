@@ -5,7 +5,7 @@ date:   2026-03-06
 categories: blog
 ---
 <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/elderly_falling_edited_v1.mp4" autoplay loop muted playsinline controls preload="metadata" width="800rem"></video>
-<figcaption style="text-align: center;">Alerting when a person / elderly falls down. Query: "Alert me if you see people falling down"</figcaption>
+<figcaption style="text-align: center;">Vaan alerts when a person / elderly falls down. Query: "Alert me if you see people falling down"</figcaption>
 
 <div class="hero-links">
   <a href="#demo">Demo</a>
@@ -18,7 +18,7 @@ categories: blog
 
 <br>
 
-Cameras are everywhere — in our homes, on our streets, in stores, at intersections, in care centers, in mobile devices and across the systems we rely on every day. Yet most of them are still just passive recordings: endless hours of footage that no one watches unless something has already gone wrong. This is going to be even more prevelent in the future when our wearable devices and embodied agents start recording our lives.
+Cameras are everywhere — in our homes, on our streets, in stores, at intersections, in care centers, in mobile devices and across the systems we rely on every day. Yet most of them are still just passive recordings: endless hours of footage that no one watches unless something has already gone wrong.
 
 What if live video systems could do more than just record? What if they could understand context, reason over events, and alert only when something genuinely important happens? — even across thousands of hours of uneventful footage? Better yet, what if they could anticipate important events before they fully unfold?
 
@@ -34,7 +34,7 @@ The core problem in live video understanding is sparsity. In most real-world str
 
 A fall, an accident, a theft, an abandoned item, or an unusual event may happen only once in thousands of hours of footage. In many streams, it may never happen at all. And yet the system has to stay ready, keep watching, and make the right call in real time. This makes the problem fundamentally different from the typical short-context perception tasks that multimodal LLMs have shown strong capabilities for.
 
-Because of this, we cannot process the entire stream with multimodal LLMs in the traditional way due to the limitations: context windows are finite, end-to-end latency becomes too high, and the cost of continuously querying large models is prohibitive. At the same time, we still want to leverage the world understanding and reasoning capabilities of multimodal LLMs and to have the flexibility of handling variety of events <b>just with text based queries</b> and not complex configuration or event specific pipelines.
+Because of this, we cannot process the entire stream with multimodal LLMs in the traditional way (limitations: context windows , latency and the cost ). At the same time, we still want to leverage the world understanding and reasoning capabilities of multimodal LLMs and to have the flexibility of handling variety of events <b>just with text based queries</b> and not complex configuration or event specific pipelines.
 
 ## Approach
 
@@ -56,7 +56,9 @@ The key stages in that pipeline are:
 * Once the transcript is classified as complete and end-of-turn, it is passed to the LLM to generate a response.
 * The response is then sent to a TTS (text-to-speech) model to produce audio output.
 
-All of these steps are executed in a streaming manner to reduce both latency and context usage. At a high level, the solution is to first use a cheap and fast mechanism to speculate whether an event of interest has occurred — in the voice assistant case, speech and turn detection — and then hand over only the relevant context to a more accurate but more expensive LLM for verification and response generation.
+All of these steps are executed in a streaming manner to reduce both latency and context usage. 
+
+At a high level, the solution is to first use a cheap and fast mechanism to speculate whether an event of interest has occurred — in the voice assistant case, speech and turn detection — and then hand over only the relevant context to a more accurate but more expensive LLM for verification and response generation.
 
 This is similar to what Vaan attempts to achieve for live video streams.
 
@@ -78,7 +80,7 @@ The key stages in this pipeline are:
 <div id="demo"></div>
 # Demo
 
-We’ve put together a few demos of Vaan in action across very different real-world scenarios ( scroll horizontally over the videos to see them all ):
+We’ve put together a few demos of Vaan in action across very different real-world scenarios on a demo UI ( scroll horizontally over the videos to see them all ):
 
 - Alerting when a baby has fallen down or may have gotten hurt.
 - Alerting when uninvited wildlife shows up to raid the cat food.
@@ -93,32 +95,32 @@ We’ve put together a few demos of Vaan in action across very different real-wo
   <div class="demo-carousel__viewport" data-carousel-track>
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/baby_falling_demo_edited.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Alerting when a baby has fallen down or may have gotten hurt.<br> Query: "baby getting hurt or falling down"</figcaption>
+      <figcaption>Vaan alerts when a baby has fallen down or may have gotten hurt.<br> Query: "baby getting hurt or falling down"</figcaption>
     </figure>
 
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/fox_cat_demo_v3.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Alerting when uninvited wildlife shows up to raid the cat food.<br> Query: "when the wildlife eats the cat foold. tell me only when it starts eating"</figcaption>
+      <figcaption>Vaan alerts when uninvited wildlife shows up to raid the cat food.<br> Query: "when the wildlife eats the cat foold. tell me only when it starts eating"</figcaption>
     </figure>
 
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/santa_places_gift_edited_v1.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Alerting when Santa places a gift.<br> Query: "Alert me when santa places the gift in the christmas tree"</figcaption>
+      <figcaption>Vaan alerts when Santa places a gift.<br> Query: "Alert me when santa places the gift in the christmas tree"</figcaption>
     </figure>
 
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/seattle_car_accident_demo.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Alerting when a vehicle accident occurs at an intersection.<br> Query: "alert me when an accident involving vehicles happen"</figcaption>
+      <figcaption>Vaan alerts when a vehicle accident occurs at an intersection.<br> Query: "alert me when an accident involving vehicles happen"</figcaption>
     </figure>
 
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/shopping_missing_detection_edited.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Alerting when a customer completes a checkout and walks away leaving their items behind.<br> Query: "a customer completes a checkout and walks away leaving their items behind"</figcaption>
+      <figcaption>Vaan alerts when a customer completes a checkout and walks away leaving their items behind.<br> Query: "a customer completes a checkout and walks away leaving their items behind"</figcaption>
     </figure>
 
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/elderly_falling_edited_v1.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Alerting when a person falls down.<br> Query: "Alert me if you see people falling down"</figcaption>
+      <figcaption>Vaan alerts when a person falls down.<br> Query: "Alert me if you see people falling down"</figcaption>
     </figure>
   </div>
 
@@ -200,7 +202,7 @@ Follow the instructions in the [README](https://github.com/ambient-intelligence-
 <div id="current-limitations"></div>
 # Current limitations
 
-- The screener model uses `Qwen3-VL-Reranker-2B` to perform fast verification of chunks against the trigger queries. Out of the box, the model shows poor separability: negative examples typically score below 53%, while positive examples are often only slightly higher, in the 55–57% range. This leaves little margin for reliable thresholding. 
+- The screener model uses `Qwen3-VL-Reranker-2B` to perform fast verification of chunks against the trigger queries. Out of the box, the model shows poor separability of classes: negative examples typically score below 53%, while positive examples are often only slightly higher, in the 55–57% range. This leaves little margin for reliable thresholding. 
 
 - We found that a threshold of 0.55 provides a good balance between precision and recall. However, the optimal threshold depends on the use case, so it may need to be adjusted based on your requirements. We recommend starting with 0.55 and calibrating it on your own data.
 
@@ -221,12 +223,12 @@ This behavior is not specific to any one model. We observe similar failure modes
   <div class="demo-carousel__viewport" data-carousel-track>
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/false_positive_car_accident_edited.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Example 1: The model mistakes overhead street power lines for fallen lines and incorrectly flags the scene as a car accident.</figcaption>
+      <figcaption>Limitation Example 1: The model mistakes overhead street power lines for fallen lines and incorrectly flags the scene as a car accident.</figcaption>
     </figure>
 
     <figure class="demo-carousel__slide">
       <video src="https://pub-3d45716910b34ddaac4aced54197b940.r2.dev/videos/shopping_error_edited.mp4" autoplay loop muted playsinline controls preload="metadata"></video>
-      <figcaption>Example 2: Query: "a customer completes a checkout and walks away leaving their items behind".<br> The model mistakes empty bags near the checkout aisle for abandoned items and incorrectly flags the customer as leaving without them.
+      <figcaption>Limitation Example 2: Query: "a customer completes a checkout and walks away leaving their items behind".<br> The model mistakes empty bags near the checkout aisle for abandoned items and incorrectly flags the customer as leaving without them.
 </figcaption>
     </figure>
   </div>
