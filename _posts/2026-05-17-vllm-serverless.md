@@ -1,6 +1,6 @@
 ---
 layout: category-post
-title:  "Can serverless GPU be an alternative for Local LLMs ?"
+title:  "Can serverless GPU replace local LLMs? I got cold starts down 6.5x to find out"
 date:   2026-05-17
 categories: blog
 ---
