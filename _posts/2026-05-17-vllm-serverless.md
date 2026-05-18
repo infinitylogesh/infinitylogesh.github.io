@@ -1,9 +1,10 @@
 ---
 layout: category-post
-title:  "Can serverless GPU replace local LLMs? I got cold starts down 6.5x to find out"
+title:  "Can serverless GPU replace local LLMs? I reduced vLLM cold start 6.5x to find out"
 date:   2026-05-17
 categories: blog
 ---
+![hero](/assets/images/cover_image_blog.png)
 
 > TLDR:
 > I explore serverless GPU inference as an alternative for local and private
