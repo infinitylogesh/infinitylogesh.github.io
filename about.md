@@ -3,11 +3,15 @@ layout: home_page
 title: About
 ---
 
-I am **Logesh Kumar Umapathi**  , a Machine learning Engineer at [Blackbox.ai](https://www.blackbox.ai/). My work focuses on building agentic systems and models that help in automating software development and improve developer productivity. My interests include Code generation LLMs , Synthetic data generation with LLMs and Alighnment of code LLMs to Human preferences.
+I am **Logesh Kumar Umapathi**  , a Machine learning Research Engineer at [Blackbox.ai](https://www.blackbox.ai/). My work focuses on building agentic systems and optimizing LLMs for high performance serving.I have also worked on Coding agents that achieved SoTA on coding benchmarks like SWE-Bench (verified and lite) and Nextjs Agents Eval.
+
+Outside of work,I am building an open source Video Agent - [Ambient](https://github.com/ambient-intelligence-hq/ambient) . Which won 2 categories and placed runner-up in a third at the [ECCV Wearable AI Challenge 2026](https://wearable-ai-workshop.github.io/) - orgnaized by Meta.
 
 Previously, I was a Lead Maching learning Engineer at [Saama Technologies](https://www.saama.com/). Leading machine learning efforts for a product focused on accelerating clinical trials and time to market of drugs.
 
 I have been part of notable Code LLM research including [Starcoder](https://arxiv.org/abs/2305.06161) , [Santacoder](https://arxiv.org/abs/2301.03988) and [Bigcode Evaluation harness](https://github.com/bigcode-project/bigcode-evaluation-harness).
+
+I was recognized as a Top 7 GenAI Scientist at the AV Luminary Awards 2025. 
 
 When I'm not in front of a computer screen , I would love to speak at ML events. I also love reading books and photography.
 
@@ -19,13 +23,17 @@ My socials: [![LinkedIn Profile](https://img.shields.io/badge/-LinkedIn-0077B5?s
 
 ## Technologies
 
-🤖 Machine Learning: Transformers, PyTorch, Scikit-Learn, Weights & Bias, Deepspeed, TensorRT , vLLM , Text generation inference.
+🤖 Machine Learning: Transformers, PyTorch, Scikit-Learn, Weights & Bias, Deepspeed, TensorRT , Sglang , vLLM , Text generation inference.
 
 ☁️ Cloud: AWS, GCP, Docker, Airflow.
 
 -------------------
 
 ## Publications:
+
+- [Ambient @ EgoLongQA 2026: Distilling Long-Video perception into a Sub-2B Model](https://arxiv.org/abs/2609.07154) - ECCV 2026 [[Code](https://github.com/ambient-intelligence-hq/egolongqa-2b)]
+
+- [Ambient @ EgoProactive 2026 : Proactive Egocentric Assistance with Visually Grounded Supervision](https://arxiv.org/abs/2609.07099) - ECCV 2026 [[Code](https://github.com/ambient-intelligence-hq/egoproactive-verbalizer)]
 
 - [Med-halt: Medical domain hallucination test for large language models](https://arxiv.org/abs/2307.15343) -  CoNLL 2023 [Code](https://github.com/medhalt/medhalt) , [Website](https://medhalt.github.io/)
 
@@ -38,6 +46,10 @@ My socials: [![LinkedIn Profile](https://img.shields.io/badge/-LinkedIn-0077B5?s
 -------------------
 
 ## Notable Talks:
+
+- [Building a Video Understanding Agent: Search, Citations & Reasoning](https://www.analyticsvidhya.com/datahacksummit-2026/) - Analytics Vidhya's - DataHack summit 2026
+
+- [From Language to Robotics: Practical Lessons Bridging LLMs, RL, and AI](https://www.analyticsvidhya.com/datahacksummit-2025) - Analytics Vidhya's - DataHack summit 2025
 
 - [Taming the Large language models – Efficient inference of Multi-billion parameter models](https://www.nlpsummit.org/taming-the-large-language-models-efficient-inference-of-multi-billion-parameter-models/) - NLP Summit 2023. [[Presentation](https://docs.google.com/presentation/d/1eRfVG9H3wdqtU8_cBR7qbu84DT_iRFPsiMoBzZSn1A8/edit?usp=sharing)]
 
@@ -54,6 +66,10 @@ My socials: [![LinkedIn Profile](https://img.shields.io/badge/-LinkedIn-0077B5?s
 -------------------
 
 ## Open source projects:
+
+- [Ambient](https://github.com/ambient-intelligence-hq/ambient) : A video agent for any video in and action out. [#VideoUnderstanding]() [#Long-formVideo]() [#ECCV2026]()
+
+- [GUI-Decisions](https://huggingface.co/collections/infinitylogesh/gui-decisions) : Decision models for GUI grounding. 3x faster than existing methods. [[Blog](https://huggingface.co/blog/infinitylogesh/gui-decisions-stop-decoding-coordinates)]
 
 - [Bigcode Evaluation harness](https://github.com/bigcode-project/bigcode-evaluation-harness) : A framework for the evaluation of autoregressive code generation language models. [#pytorch]() [#CodeGeneration]() [#LLM]()
 
