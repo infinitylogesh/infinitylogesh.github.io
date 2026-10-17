@@ -1,6 +1,7 @@
 ---
 layout: home_page
 title: About
+profile_schema: true
 ---
 
 I am **Logesh Kumar Umapathi**  , a Machine learning Research Engineer at [Blackbox.ai](https://www.blackbox.ai/). My work focuses on building agentic systems and optimizing LLMs for high performance serving.I have also worked on Coding agents that achieved SoTA on coding benchmarks like SWE-Bench (verified and lite) and Nextjs Agents Eval.

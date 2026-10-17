@@ -29,6 +29,29 @@ social_username: infinitylogesh
 twitter_username: logesh_umapathi
 linkedin_username: logeshkumaru
 google_scholar_id: eWwEqToAAAAJ
+huggingface_username: infinitylogesh
+
+# Person entity (About page JSON-LD / Google knowledge panel)
+person:
+  name: Logesh Kumar Umapathi
+  job_title: Machine Learning Research Engineer
+  employer_name: Blackbox.ai
+  employer_url: https://www.blackbox.ai/
+  image: https://github.com/infinitylogesh.png
+  knows_about:
+    - Large language models
+    - Multimodal AI
+    - Agentic systems
+    - High-performance ML inference
+    - Computer-use agents
+    - Video understanding
+  same_as:
+    - https://www.linkedin.com/in/logeshkumaru
+    - https://twitter.com/logesh_umapathi
+    - https://github.com/infinitylogesh
+    - https://scholar.google.com/citations?user=eWwEqToAAAAJ
+    - https://huggingface.co/infinitylogesh
+    - https://arxiv.org/search/cs?searchtype=author&query=Umapathi%2C+Logesh+Kumar
 
 # Set theme color here
 # Choose from: black (default), blue, gray, magenta, orange, red, white, and yellow.

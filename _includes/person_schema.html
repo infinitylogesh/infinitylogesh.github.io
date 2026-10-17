@@ -1,0 +1,65 @@
+{% assign site_root = site.url | append: site.baseurl %}
+{% assign about_url = site_root | append: '/about/' %}
+{% assign person_id = site_root | append: '/#person' %}
+{% assign schema_mode = include.mode | default: 'profile' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  {% if schema_mode == 'profile' %}
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "{{ about_url }}#profilepage",
+      "url": "{{ about_url }}",
+      "name": "About {{ site.person.name }}",
+      "mainEntity": { "@id": "{{ person_id }}" }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ person_id }}",
+      "name": "{{ site.person.name }}",
+      "url": "{{ site_root }}/",
+      "image": "{{ site.person.image }}",
+      "jobTitle": "{{ site.person.job_title }}",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "{{ site.person.employer_name }}",
+        "url": "{{ site.person.employer_url }}"
+      },
+      "knowsAbout": [
+        {%- for topic in site.person.knows_about -%}
+        "{{ topic }}"{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ],
+      "sameAs": [
+        {%- for link in site.person.same_as -%}
+        "{{ link }}"{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  ]
+  {% else %}
+  "@type": "Person",
+  "@id": "{{ person_id }}",
+  "name": "{{ site.person.name }}",
+  "url": "{{ site_root }}/",
+  "image": "{{ site.person.image }}",
+  "jobTitle": "{{ site.person.job_title }}",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "{{ site.person.employer_name }}",
+    "url": "{{ site.person.employer_url }}"
+  },
+  "knowsAbout": [
+    {%- for topic in site.person.knows_about -%}
+    "{{ topic }}"{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ],
+  "sameAs": [
+    {%- for link in site.person.same_as -%}
+    "{{ link }}"{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ]
+  {% endif %}
+}
+</script>
