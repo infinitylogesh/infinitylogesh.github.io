@@ -1,0 +1,136 @@
+<!doctype html><html lang="en"><head><title>Writing vs reading</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* The Ambient design system (vaan_db/site/public/assets/css/styles.css): cream canvas, dark-brown ink,
+   one orange accent. In these figures orange is our slot read, dark brown the vanilla baseline, taupe
+   neutral structure. */
+:root {
+  --bg:#fdf6f1; --bg-2:#f8ece4; --panel:#ffffff; --panel-2:#fbf1ea;
+  --ink-panel:#1c100b; --ink-panel-2:#2a170e; --on-ink:#fbeee6; --on-ink-muted:#bfa89c;
+  --ink:#1a110d; --ink2:#6b5850; --ink3:#9a877e; --rule:rgba(58,28,12,0.11); --rule-2:rgba(58,28,12,0.06); --dot:rgba(58,28,12,0.07);
+  --shadow:0 1px 2px rgba(58,28,12,0.05), 0 12px 32px -14px rgba(58,28,12,0.18);
+  --fast:#ff5a14; --fast-2:#ff7a2e; --fast-soft:#ffe5d8;   /* ours: the slot read */
+  --slow:#3a2013; --slow-soft:#efe2d9;                     /* the baseline: writing */
+  --accent:#a3836f; --accent-soft:#f3e7df;                 /* neutral structure (UI, targets, prefill) */
+  --gt:#1a110d;                                            /* reference marks: truth, boxes */
+}
+* { box-sizing:border-box; }
+html, body { margin:0; color:var(--ink); font:15px/1.6 "Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+  background:radial-gradient(var(--dot) 1.2px, transparent 1.2px) -12px -12px / 24px 24px, var(--bg); }
+.fig { max-width:1000px; margin:0 auto; padding:22px 18px 24px; }
+.eyebrow { font:600 11.5px "Inter",sans-serif; letter-spacing:.26em; text-transform:uppercase; color:var(--fast); margin:0 0 8px; }
+.title { font:800 24px/1.12 "Inter Tight","Inter",sans-serif; letter-spacing:-.03em; margin:0 0 8px; text-wrap:balance; }
+.lede { color:var(--ink2); font-size:14.5px; margin:0 0 16px; max-width:52rem; }
+.cap { color:var(--ink3); font-size:12.5px; margin-top:12px; line-height:1.55; }
+.mono { font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+.label { font:500 10.5px "JetBrains Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink3); }
+.panel { background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:16px; box-shadow:var(--shadow); }
+.term { background:var(--ink-panel); color:var(--on-ink); border-radius:12px; padding:12px 14px; font:12.5px/1.7 "JetBrains Mono",monospace;
+  box-shadow:0 18px 36px -22px rgba(42,23,14,.6); }
+.term .dim { color:var(--on-ink-muted); } .term .o { color:var(--fast-2); font-weight:600; }
+.row { display:flex; gap:16px; flex-wrap:wrap; } .row > * { flex:1 1 300px; min-width:0; }
+.controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:14px 0 0; font-size:13.5px; color:var(--ink2); }
+button { font:600 13.5px "Inter",sans-serif; background:var(--panel); color:var(--ink); border:1px solid var(--rule); border-radius:10px;
+  padding:7px 14px; cursor:pointer; box-shadow:var(--shadow); transition:border-color .15s, transform .12s; }
+button:hover { border-color:rgba(255,90,20,.45); } button:active { transform:translateY(1px); }
+input[type=range], input[type=checkbox] { accent-color:var(--fast); }
+.fast { color:var(--fast); } .slow { color:var(--slow); } .k { font-weight:600; }
+.big { font:800 30px/1 "Inter Tight",sans-serif; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+canvas { display:block; max-width:100%; }
+@keyframes dashflow { to { stroke-dashoffset:-26; } }
+.flow { stroke-dasharray:6 7; stroke-linecap:round; animation:dashflow 1.4s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .flow { animation:none; } }
+</style>
+<script>
+/* embedded as an iframe: tell the host page our height, so it can size the frame to fit at any width */
+(function () { if (parent === window) return;
+  // the body's own height (not the document's, which is at least the frame's current height and could only grow)
+  const post = () => document.body && parent.postMessage({ diagramHeight: Math.ceil(document.body.getBoundingClientRect().height) + 2 }, "*");
+  addEventListener("load", post); addEventListener("resize", post);
+  addEventListener("DOMContentLoaded", () => new ResizeObserver(post).observe(document.body)); })();
+</script>
+
+<style>
+.lane { display:flex; flex-direction:column; gap:10px; }
+.lane h3 { margin:0; font:800 19px "Inter Tight",sans-serif; letter-spacing:-.02em; } .lane .sub { color:var(--ink2); font-size:13px; margin-top:-6px; }
+
+.tokens { min-height:92px; display:flex; flex-wrap:wrap; gap:4px; align-content:flex-start; }
+.tok { font-family:"JetBrains Mono",monospace; font-size:12.5px; padding:2px 7px; border-radius:6px; background:var(--slow-soft); color:var(--slow);
+  border:1px solid var(--rule); animation:pop .18s ease-out; }
+@keyframes pop { from { transform:scale(.6); opacity:0; } to { transform:none; opacity:1; } }
+.clock { font:800 34px/1 "Inter Tight",sans-serif; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+.passes { font-size:13px; color:var(--ink2); }
+.bars { min-height:92px; display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+.chart { font-size:12px; color:var(--ink2); } .chart svg { width:100%; height:62px; display:block; }
+.done { font-size:13px; font-weight:600; min-height:20px; }
+.status { font-size:12.5px; color:var(--ink3); min-height:18px; }
+</style></head><body><div class="fig">
+<p class="eyebrow">Figure 1</p><p class="title">Writing a decision vs reading it</p>
+<!-- <p class="lede">The same model, the same screenshot, the same question: what to do next, and where. Timings follow the measured medians (Gemma 4 31B, one request alone), slowed down 4× so the steps are visible.</p> -->
+<div class="row">
+  <div class="panel lane">
+    <h3 class="slow">Writing</h3><div class="sub">the model generates its step as JSON, one token per forward pass</div>
+    <div class="term"><span class="dim">…screenshot, task, history…</span><br>&lt;assistant&gt; <span class="o">▌</span></div>
+    <div class="status" id="ws"></div>
+    <div class="tokens" id="wt"></div>
+    <div><span class="clock slow" id="wc">0 ms</span> <span class="passes" id="wp"></span></div>
+    <div class="done slow" id="wd"></div>
+  </div>
+  <div class="panel lane">
+    <h3 class="fast">Reading</h3><div class="sub">the prompt ends where each answer goes; one pass gives every distribution</div>
+    <div class="term"><span class="dim">…screenshot, task, history…</span><br>&lt;assistant&gt; action: <span class="o">▮</span> x: <span class="o">▮</span> y: <span class="o">▮</span></div>
+    <div class="status" id="rs"></div>
+    <div class="bars" id="rb"></div>
+    <div><span class="clock fast" id="rc">0 ms</span> <span class="passes" id="rp"></span></div>
+    <div class="done fast" id="rd"></div>
+  </div>
+</div>
+<div class="controls"><button id="go">Replay</button><label><input type="checkbox" id="real"> real time</label></div>
+<p class="cap">Measured: slot read 146 ms per step; vanilla Gemma 4 writing its native <span class="mono">{"action", "point": [y, x]}</span> JSON 472–546 ms (about 20 tokens). Both start with the same prefill of the screenshot and prompt (shown here as ~110 ms); writing then spends one forward pass per token.</p>
+</div>
+<script>
+const TOKENS = ['{"', 'action', '":', ' "', 'click', '",', ' "', 'point', '":', ' [', '1', '7', '1', ',', ' ', '4', '1', '2', ']}'];
+const PREFILL = 110, PER_TOKEN = 19, READ = 36;
+const $ = id => document.getElementById(id);
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function hist(n, peak, width, second) {
+  const p = []; for (let i = 0; i < n; i++) { const g = Math.exp(-((i - peak) ** 2) / (2 * width * width)) + (second ? 0.18 * Math.exp(-((i - second) ** 2) / 8) : 0); p.push(g + 0.004); }
+  const s = p.reduce((a, b) => a + b, 0); return p.map(v => v / s);
+}
+function chartSVG(p, labels) {
+  const mx = Math.max(...p), bw = 100 / p.length, col = css("--fast");
+  let r = ""; p.forEach((v, i) => { const h = v / mx * 52; r += `<rect x="${i * bw}" y="${58 - h}" width="${Math.max(bw * .82, .25)}" height="${h}" fill="${col}" opacity="${labels ? 1 : .9}"/>`; });
+  return `<svg viewBox="0 0 100 60" preserveAspectRatio="none">${r}</svg>`;
+}
+let timers = [], runId = 0;
+function at(ms, f) { timers.push(setTimeout(f, ms)); }
+function run() {
+  timers.forEach(clearTimeout); timers = []; const id = ++runId;
+  const slow = $("real").checked ? 1 : 4;
+  ["wt", "rb", "wd", "rd", "wp", "rp"].forEach(id => $(id).innerHTML = "");
+  $("wc").textContent = $("rc").textContent = "0 ms";
+  $("ws").textContent = $("rs").textContent = "prefill: reading the screenshot and prompt…";
+  const t0 = performance.now(); let wDone = false, rDone = false;
+  const tick = () => { const t = (performance.now() - t0) / slow;
+    if (!wDone) $("wc").textContent = Math.round(Math.min(t, PREFILL + TOKENS.length * PER_TOKEN)) + " ms";
+    if (!rDone) $("rc").textContent = Math.round(Math.min(t, PREFILL + READ)) + " ms";
+    if (!(wDone && rDone) && id === runId) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+  at(PREFILL * slow, () => { $("ws").textContent = "generating, one token per forward pass"; $("rs").textContent = "one read at each ▮"; });
+  TOKENS.forEach((tk, i) => at((PREFILL + (i + 1) * PER_TOKEN) * slow, () => {
+    const s = document.createElement("span"); s.className = "tok"; s.textContent = tk.replace(/ /g, "·"); $("wt").appendChild(s);
+    $("wp").textContent = `· ${i + 1} forward passes after prefill`;
+    if (i === TOKENS.length - 1) { wDone = true; $("ws").textContent = "then parse the JSON"; $("wd").textContent = `done · ${PREFILL + TOKENS.length * PER_TOKEN} ms`; }
+  }));
+  at((PREFILL + READ) * slow, () => {
+    rDone = true;
+    const act = [["click", .91], ["type", .05], ["scroll", .03], ["…", .01]];
+    $("rb").innerHTML =
+      `<div class="chart"><b>action</b>${act.map(([a, v]) => `<div style="display:flex;align-items:center;gap:6px;font-size:11.5px"><span style="width:38px">${a}</span><span style="height:7px;border-radius:3px;background:${css("--fast")};width:${v * 100}%"></span></div>`).join("")}</div>` +
+      `<div class="chart"><b>x</b> · 256 bins${chartSVG(hist(256, 171, 3))}</div><div class="chart"><b>y</b> · 256 bins${chartSVG(hist(256, 104, 3, 60))}</div>`;
+    $("rp").textContent = "· 1 read, no generation"; $("rs").textContent = "every slot's distribution, from one prefill";
+    $("rd").textContent = `done · ${PREFILL + READ} ms`;
+  });
+}
+$("go").onclick = run; $("real").onchange = run; run();
+</script></body></html>

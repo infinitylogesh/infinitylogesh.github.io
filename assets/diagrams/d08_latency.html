@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><title>Where a step's time goes</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* The Ambient design system (vaan_db/site/public/assets/css/styles.css): cream canvas, dark-brown ink,
+   one orange accent. In these figures orange is our slot read, dark brown the vanilla baseline, taupe
+   neutral structure. */
+:root {
+  --bg:#fdf6f1; --bg-2:#f8ece4; --panel:#ffffff; --panel-2:#fbf1ea;
+  --ink-panel:#1c100b; --ink-panel-2:#2a170e; --on-ink:#fbeee6; --on-ink-muted:#bfa89c;
+  --ink:#1a110d; --ink2:#6b5850; --ink3:#9a877e; --rule:rgba(58,28,12,0.11); --rule-2:rgba(58,28,12,0.06); --dot:rgba(58,28,12,0.07);
+  --shadow:0 1px 2px rgba(58,28,12,0.05), 0 12px 32px -14px rgba(58,28,12,0.18);
+  --fast:#ff5a14; --fast-2:#ff7a2e; --fast-soft:#ffe5d8;   /* ours: the slot read */
+  --slow:#3a2013; --slow-soft:#efe2d9;                     /* the baseline: writing */
+  --accent:#a3836f; --accent-soft:#f3e7df;                 /* neutral structure (UI, targets, prefill) */
+  --gt:#1a110d;                                            /* reference marks: truth, boxes */
+}
+* { box-sizing:border-box; }
+html, body { margin:0; color:var(--ink); font:15px/1.6 "Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+  background:radial-gradient(var(--dot) 1.2px, transparent 1.2px) -12px -12px / 24px 24px, var(--bg); }
+.fig { max-width:1000px; margin:0 auto; padding:22px 18px 24px; }
+.eyebrow { font:600 11.5px "Inter",sans-serif; letter-spacing:.26em; text-transform:uppercase; color:var(--fast); margin:0 0 8px; }
+.title { font:800 24px/1.12 "Inter Tight","Inter",sans-serif; letter-spacing:-.03em; margin:0 0 8px; text-wrap:balance; }
+.lede { color:var(--ink2); font-size:14.5px; margin:0 0 16px; max-width:52rem; }
+.cap { color:var(--ink3); font-size:12.5px; margin-top:12px; line-height:1.55; }
+.mono { font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+.label { font:500 10.5px "JetBrains Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink3); }
+.panel { background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:16px; box-shadow:var(--shadow); }
+.term { background:var(--ink-panel); color:var(--on-ink); border-radius:12px; padding:12px 14px; font:12.5px/1.7 "JetBrains Mono",monospace;
+  box-shadow:0 18px 36px -22px rgba(42,23,14,.6); }
+.term .dim { color:var(--on-ink-muted); } .term .o { color:var(--fast-2); font-weight:600; }
+.row { display:flex; gap:16px; flex-wrap:wrap; } .row > * { flex:1 1 300px; min-width:0; }
+.controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:14px 0 0; font-size:13.5px; color:var(--ink2); }
+button { font:600 13.5px "Inter",sans-serif; background:var(--panel); color:var(--ink); border:1px solid var(--rule); border-radius:10px;
+  padding:7px 14px; cursor:pointer; box-shadow:var(--shadow); transition:border-color .15s, transform .12s; }
+button:hover { border-color:rgba(255,90,20,.45); } button:active { transform:translateY(1px); }
+input[type=range], input[type=checkbox] { accent-color:var(--fast); }
+.fast { color:var(--fast); } .slow { color:var(--slow); } .k { font-weight:600; }
+.big { font:800 30px/1 "Inter Tight",sans-serif; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+canvas { display:block; max-width:100%; }
+@keyframes dashflow { to { stroke-dashoffset:-26; } }
+.flow { stroke-dasharray:6 7; stroke-linecap:round; animation:dashflow 1.4s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .flow { animation:none; } }
+</style>
+<script>
+/* embedded as an iframe: tell the host page our height, so it can size the frame to fit at any width */
+(function () { if (parent === window) return;
+  // the body's own height (not the document's, which is at least the frame's current height and could only grow)
+  const post = () => document.body && parent.postMessage({ diagramHeight: Math.ceil(document.body.getBoundingClientRect().height) + 2 }, "*");
+  addEventListener("load", post); addEventListener("resize", post);
+  addEventListener("DOMContentLoaded", () => new ResizeObserver(post).observe(document.body)); })();
+</script>
+
+<style>
+svg { width:100%; height:auto; display:block; overflow:visible; }
+.lbl { font:700 13.5px "Inter",system-ui,sans-serif; fill:var(--ink); }
+.sub { font:12px "Inter",system-ui,sans-serif; fill:var(--ink3); }
+.tick { font:11.5px "JetBrains Mono",monospace; fill:var(--ink3); }
+.tot { font:600 13px "JetBrains Mono",monospace; }
+.seglbl { font:11.5px "Inter",system-ui,sans-serif; fill:var(--ink); }
+.legend { display:flex; gap:16px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); margin-top:8px; }
+.legend i { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:-2px; margin-right:5px; }
+</style></head><body><div class="fig">
+<p class="eyebrow">Figure 8</p><p class="title">Where one step's time goes</p>
+<p class="lede">Gemma 4 31B (NVFP4) on one RTX PRO 6000, one request at a time, a fresh screenshot. Writing pays one forward pass per output token; reading stops after the prefill. The first slot reader lost most of its time in the server's request handling, not on the GPU.</p>
+<div class="panel"><svg id="s" viewBox="0 0 1000 330" role="img" aria-label="Timeline of one step for vanilla writing, slot reading before and after the read-path fix, and vanilla with thinking"></svg>
+<div class="legend"><span><i style="background:var(--ink3);opacity:.5"></i>request handling (HTTP, template, image)</span><span><i style="background:var(--accent)"></i>prefill on the GPU</span>
+<span><i style="background:var(--slow)"></i>one decode step per output token</span><span><i style="background:repeating-linear-gradient(45deg,var(--ink3) 0 3px,var(--slow-soft) 3px 7px)"></i>8 slot requests waiting on one API process</span></div>
+<div class="controls"><button id="go">Replay</button><span class="mono" id="clk"></span></div></div>
+<p class="cap">Segments are approximate, built from vLLM's per-request metrics (prefill 79–87 ms; decode ≈ 19 ms per token) and our measured end-to-end medians: vanilla native JSON 472–546 ms for ~20 tokens; slots 237 ms before the fix and 146 ms after (8 API-server processes, JPEG screenshots at model size, 256 label ids per request); vanilla with thinking 2.6–3.1 s.</p>
+</div>
+<script>
+const ROWS = [
+  { name: "Vanilla · writes native JSON", sub: "~20 output tokens", col: "--slow", total: "≈ 510 ms (measured 472–546)",
+    segs: [["handle", 40, "--ink3", .5], ["prefill", 87, "--accent", 1], ...Array.from({ length: 20 }, () => ["tok", 19, "--slow", 1])] },
+  { name: "Slots · first version", sub: "8 parallel slot requests, 1 API process", col: "--ink3", total: "237 ms",
+    segs: [["prefill", 79, "--accent", 1], ["queued", 143, "hatch", 1], ["", 15, "--ink3", .5]] },
+  { name: "Slots · after the read-path fix", sub: "8 API processes, JPEG at model size", col: "--fast", total: "146 ms",
+    segs: [["prefill", 79, "--accent", 1], ["handling", 67, "--ink3", .5]] },
+  { name: "Vanilla · with thinking", sub: "130–230 tokens of reasoning first", col: "--slow", total: "2.6–3.1 s →",
+    segs: [["handle", 40, "--ink3", .5], ["prefill", 87, "--accent", 1], ...Array.from({ length: 60 }, () => ["tok", 19, "--slow", 1])] },
+];
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const MAX = 600, X0 = 230, X1 = 820, sx = ms => X0 + ms / MAX * (X1 - X0);
+const svg = document.getElementById("s");
+let t0, raf;
+function frame(now) {
+  if (!t0) t0 = now;
+  const ms = Math.min(MAX * 1.05, (now - t0) / 4.5);  // slowed 4.5×
+  render(ms); document.getElementById("clk").textContent = Math.round(Math.min(ms, MAX)) + " ms (slowed 4.5×)";
+  if (ms < MAX * 1.05) raf = requestAnimationFrame(frame);
+}
+function render(ms) {
+  let s = `<defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <rect width="7" height="7" fill="${css("--slow-soft")}"/><line x1="0" y1="0" x2="0" y2="7" stroke="${css("--ink3")}" stroke-width="3"/></pattern></defs>`;
+  [0, 100, 200, 300, 400, 500, 600].forEach(t => s += `<line x1="${sx(t)}" x2="${sx(t)}" y1="10" y2="292" stroke="${css("--rule")}"/><text class="tick" x="${sx(t)}" y="310" text-anchor="middle">${t} ms</text>`);
+  ROWS.forEach((r, i) => {
+    const y = 26 + i * 68; let t = 0;
+    s += `<text class="lbl" x="0" y="${y + 14}">${r.name}</text><text class="sub" x="0" y="${y + 31}">${r.sub}</text>`;
+    r.segs.forEach(([lab, d, col, op]) => {
+      const a = t, b = t + d; t = b;
+      if (a >= ms || a >= MAX) return;
+      const vis = Math.min(b, ms, MAX) - a;
+      s += `<rect x="${sx(a) + .5}" y="${y}" width="${Math.max(0, vis / MAX * (X1 - X0) - (lab === "tok" ? 1.4 : 1))}" height="34" rx="3" fill="${col === "hatch" ? "url(#hatch)" : css(col)}" opacity="${op}"/>`;
+      if (lab && lab !== "tok" && lab !== "handle" && vis / MAX * (X1 - X0) > lab.length * 6.5 + 12) s += `<text class="seglbl" x="${sx(a) + 6}" y="${y + 21}" style="fill:${lab === "prefill" ? "#fff" : css("--ink")}">${lab}</text>`;
+    });
+    const end = r.segs.reduce((a, v) => a + v[1], 0);
+    if (ms >= Math.min(end, MAX)) s += `<text class="tot" x="${Math.min(sx(end), X1) + 8}" y="${y + 22}" style="fill:${css(r.col)}">${r.total}</text>`;
+  });
+  svg.innerHTML = s;
+}
+function run() { cancelAnimationFrame(raf); t0 = null; raf = requestAnimationFrame(frame); }
+document.getElementById("go").onclick = run; run();
+</script></body></html>

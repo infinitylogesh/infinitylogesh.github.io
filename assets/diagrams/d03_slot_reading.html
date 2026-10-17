@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><title>Slot reading</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* The Ambient design system (vaan_db/site/public/assets/css/styles.css): cream canvas, dark-brown ink,
+   one orange accent. In these figures orange is our slot read, dark brown the vanilla baseline, taupe
+   neutral structure. */
+:root {
+  --bg:#fdf6f1; --bg-2:#f8ece4; --panel:#ffffff; --panel-2:#fbf1ea;
+  --ink-panel:#1c100b; --ink-panel-2:#2a170e; --on-ink:#fbeee6; --on-ink-muted:#bfa89c;
+  --ink:#1a110d; --ink2:#6b5850; --ink3:#9a877e; --rule:rgba(58,28,12,0.11); --rule-2:rgba(58,28,12,0.06); --dot:rgba(58,28,12,0.07);
+  --shadow:0 1px 2px rgba(58,28,12,0.05), 0 12px 32px -14px rgba(58,28,12,0.18);
+  --fast:#ff5a14; --fast-2:#ff7a2e; --fast-soft:#ffe5d8;   /* ours: the slot read */
+  --slow:#3a2013; --slow-soft:#efe2d9;                     /* the baseline: writing */
+  --accent:#a3836f; --accent-soft:#f3e7df;                 /* neutral structure (UI, targets, prefill) */
+  --gt:#1a110d;                                            /* reference marks: truth, boxes */
+}
+* { box-sizing:border-box; }
+html, body { margin:0; color:var(--ink); font:15px/1.6 "Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+  background:radial-gradient(var(--dot) 1.2px, transparent 1.2px) -12px -12px / 24px 24px, var(--bg); }
+.fig { max-width:1000px; margin:0 auto; padding:22px 18px 24px; }
+.eyebrow { font:600 11.5px "Inter",sans-serif; letter-spacing:.26em; text-transform:uppercase; color:var(--fast); margin:0 0 8px; }
+.title { font:800 24px/1.12 "Inter Tight","Inter",sans-serif; letter-spacing:-.03em; margin:0 0 8px; text-wrap:balance; }
+.lede { color:var(--ink2); font-size:14.5px; margin:0 0 16px; max-width:52rem; }
+.cap { color:var(--ink3); font-size:12.5px; margin-top:12px; line-height:1.55; }
+.mono { font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+.label { font:500 10.5px "JetBrains Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink3); }
+.panel { background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:16px; box-shadow:var(--shadow); }
+.term { background:var(--ink-panel); color:var(--on-ink); border-radius:12px; padding:12px 14px; font:12.5px/1.7 "JetBrains Mono",monospace;
+  box-shadow:0 18px 36px -22px rgba(42,23,14,.6); }
+.term .dim { color:var(--on-ink-muted); } .term .o { color:var(--fast-2); font-weight:600; }
+.row { display:flex; gap:16px; flex-wrap:wrap; } .row > * { flex:1 1 300px; min-width:0; }
+.controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:14px 0 0; font-size:13.5px; color:var(--ink2); }
+button { font:600 13.5px "Inter",sans-serif; background:var(--panel); color:var(--ink); border:1px solid var(--rule); border-radius:10px;
+  padding:7px 14px; cursor:pointer; box-shadow:var(--shadow); transition:border-color .15s, transform .12s; }
+button:hover { border-color:rgba(255,90,20,.45); } button:active { transform:translateY(1px); }
+input[type=range], input[type=checkbox] { accent-color:var(--fast); }
+.fast { color:var(--fast); } .slow { color:var(--slow); } .k { font-weight:600; }
+.big { font:800 30px/1 "Inter Tight",sans-serif; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+canvas { display:block; max-width:100%; }
+@keyframes dashflow { to { stroke-dashoffset:-26; } }
+.flow { stroke-dasharray:6 7; stroke-linecap:round; animation:dashflow 1.4s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .flow { animation:none; } }
+</style>
+<script>
+/* embedded as an iframe: tell the host page our height, so it can size the frame to fit at any width */
+(function () { if (parent === window) return;
+  // the body's own height (not the document's, which is at least the frame's current height and could only grow)
+  const post = () => document.body && parent.postMessage({ diagramHeight: Math.ceil(document.body.getBoundingClientRect().height) + 2 }, "*");
+  addEventListener("load", post); addEventListener("resize", post);
+  addEventListener("DOMContentLoaded", () => new ResizeObserver(post).observe(document.body)); })();
+</script>
+
+<style>
+.grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:16px; }
+@media (max-width:760px) { .grid { grid-template-columns:1fr; } }
+svg.shot { width:100%; height:auto; display:block; border:1px solid var(--rule); border-radius:12px; background:var(--panel); box-shadow:var(--shadow); }
+.tpl { font-family:"JetBrains Mono",monospace; font-size:13px; line-height:2.2; background:var(--ink-panel); color:var(--on-ink); border-radius:12px; padding:8px 12px; box-shadow:0 18px 36px -22px rgba(42,23,14,.6); }
+.t { padding:2px 4px; border-radius:5px; transition:background .25s, color .25s; }
+.t.ph { color:var(--on-ink-muted); border:1px dashed rgba(255,255,255,.22); }
+.t.read { background:rgba(255,122,46,.2); color:var(--fast-2); }
+.t.idle { color:var(--on-ink-muted); opacity:.6; }
+.pre { font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--on-ink-muted); margin-bottom:8px; position:relative; overflow:hidden;
+  background:var(--ink-panel-2); border-radius:12px; padding:8px 12px; }
+.sweep { position:absolute; inset:0; width:0; background:rgba(255,122,46,.16); transition:width .9s ease-in-out; }
+.pre span { position:relative; }
+.charts { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin-top:12px; }
+.ch { opacity:0; transform:translateY(6px); transition:opacity .35s, transform .35s; font-size:12px; color:var(--ink2); }
+.ch.on { opacity:1; transform:none; } .ch b { color:var(--ink); }
+.ch svg { width:100%; height:64px; display:block; }
+.note { font-size:12.5px; color:var(--ink3); margin-top:10px; min-height:18px; }
+.cross { opacity:0; transition:opacity .4s; } .cross.on { opacity:1; }
+</style></head><body><div class="fig">
+<p class="eyebrow">Figure 3</p><p class="title">Slot reading</p>
+<p class="lede">The assistant turn is a fixed template. Each slot's answer is the next-token distribution at the token before its <span class="mono">___</span> placeholder. All slots come from one prefill: nothing is generated, and no slot waits for another.</p>
+<div class="panel grid">
+  <div>
+    <svg class="shot" viewBox="0 0 320 210" role="img" aria-label="Schematic screenshot with the predicted click on the Search button">
+      <rect x="0" y="0" width="320" height="22" fill="var(--rule)"/><circle cx="12" cy="11" r="4" fill="var(--ink3)"/><circle cx="24" cy="11" r="4" fill="var(--ink3)"/>
+      <rect x="40" y="6" width="200" height="10" rx="5" fill="var(--panel)"/>
+      <text x="20" y="52" style="font:700 15px Inter,sans-serif;fill:var(--ink)">Wikipedia</text>
+      <rect x="20" y="66" width="200" height="22" rx="4" fill="var(--panel)" stroke="var(--ink3)"/>
+      <text x="28" y="81" style="font:11px Inter,sans-serif;fill:var(--ink3)">Search Wikipedia</text>
+      <rect x="226" y="66" width="56" height="22" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+      <text x="238" y="81" style="font:600 11px Inter,sans-serif;fill:var(--accent)">Search</text>
+      <g fill="var(--rule)"><rect x="20" y="104" width="280" height="7" rx="3"/><rect x="20" y="118" width="250" height="7" rx="3"/>
+        <rect x="20" y="132" width="265" height="7" rx="3"/><rect x="20" y="152" width="120" height="44" rx="4"/><rect x="150" y="152" width="150" height="7" rx="3"/>
+        <rect x="150" y="166" width="140" height="7" rx="3"/><rect x="150" y="180" width="120" height="7" rx="3"/></g>
+      <g class="cross" id="cross"><circle cx="254" cy="77" r="11" fill="none" stroke="var(--fast)" stroke-width="2.5"/>
+        <line x1="254" y1="60" x2="254" y2="94" stroke="var(--fast)" stroke-width="1.5"/><line x1="237" y1="77" x2="271" y2="77" stroke="var(--fast)" stroke-width="1.5"/>
+        <text x="254" y="112" text-anchor="middle" style="font:600 11px JetBrains Mono,monospace;fill:var(--fast)">click (0.79, 0.37)</text></g>
+    </svg>
+    <div class="note">Task: <i>search Wikipedia for “Lewis Hamilton”</i> (after typing the query)</div>
+  </div>
+  <div>
+    <div class="pre"><div class="sweep" id="sweep"></div><span>&lt;system: slots + labels&gt; &lt;user: screenshot, task, history&gt; &lt;assistant&gt;</span></div>
+    <div class="tpl" id="tpl"></div>
+    <div class="charts">
+      <div class="ch" id="c0"></div><div class="ch" id="c1"></div><div class="ch" id="c2"></div>
+    </div>
+    <div class="note" id="note"></div>
+    <div class="controls"><button id="go">Replay</button></div>
+  </div>
+</div>
+<p class="cap">Slots for one computer-use step: <span class="mono">action</span> (click, type, scroll, swipe, press, …), <span class="mono">x y</span> (256 bins each), <span class="mono">x2 y2</span> (a swipe's end), <span class="mono">key</span>, <span class="mono">sdir samt</span> (scroll direction and amount). All are read; the action decides which ones are used. In practice each slot is its own request, sent in parallel, and vLLM's prefix cache shares the screenshot and prompt.</p>
+</div>
+<script>
+const SLOTS = ["action", "x", "y", "x2", "y2", "key", "sdir", "samt"], USED = ["action", "x", "y"];
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tpl = document.getElementById("tpl");
+tpl.innerHTML = SLOTS.map(s => `<span class="t" data-s="${s}">${s}:</span> <span class="t ph" data-p="${s}">___</span>`).join(" ");
+function hist(peak, w) { const p = []; for (let i = 0; i < 256; i++) p.push(Math.exp(-((i - peak) ** 2) / (2 * w * w)) + 0.003); const s = p.reduce((a, b) => a + b); return p.map(v => v / s); }
+function svgHist(p, mark) { const mx = Math.max(...p), bw = 100 / p.length; let r = "";
+  p.forEach((v, i) => { const h = v / mx * 52; r += `<rect x="${i * bw}" y="${56 - h}" width="${bw * .9}" height="${h}" fill="${css("--fast")}"/>`; });
+  r += `<line x1="${mark * 100}" x2="${mark * 100}" y1="0" y2="60" stroke="${css("--ink")}" stroke-width=".6" stroke-dasharray="2 1.5" vector-effect="non-scaling-stroke"/>`;
+  return `<svg viewBox="0 0 100 60" preserveAspectRatio="none">${r}</svg>`; }
+const ACT = [["click", .91], ["type", .05], ["scroll", .02], ["press", .01], ["…", .01]];
+let tm = [];
+function run() {
+  tm.forEach(clearTimeout); tm = [];
+  const sw = document.getElementById("sweep"); sw.style.transition = "none"; sw.style.width = "0";
+  document.querySelectorAll(".t").forEach(t => t.classList.remove("read", "idle"));
+  [0, 1, 2].forEach(i => document.getElementById("c" + i).classList.remove("on"));
+  document.getElementById("cross").classList.remove("on");
+  document.getElementById("note").textContent = "one prefill over the screenshot and prompt…";
+  requestAnimationFrame(() => requestAnimationFrame(() => { sw.style.transition = ""; sw.style.width = "100%"; }));
+  tm.push(setTimeout(() => {
+    document.querySelectorAll(".t[data-s]").forEach(t => t.classList.add(USED.includes(t.dataset.s) ? "read" : "idle"));
+    document.getElementById("c0").innerHTML = "<b>action</b>" + ACT.map(([a, v]) =>
+      `<div style="display:flex;align-items:center;gap:6px;font-size:11.5px;margin-top:2px"><span style="width:40px">${a}</span><span style="height:7px;border-radius:3px;background:${css("--fast")};width:${v * 100}%"></span><span>${v.toFixed(2)}</span></div>`).join("");
+    document.getElementById("c1").innerHTML = "<b>x</b> · 256 bins → 0.79" + svgHist(hist(202, 3), .79);
+    document.getElementById("c2").innerHTML = "<b>y</b> · 256 bins → 0.37" + svgHist(hist(94, 3.5), .37);
+    [0, 1, 2].forEach((i, k) => tm.push(setTimeout(() => document.getElementById("c" + i).classList.add("on"), k * 60)));
+    document.getElementById("note").textContent = "8 slots read at once · action = click, so x and y are used; the rest are read and ignored";
+  }, 1000));
+  tm.push(setTimeout(() => document.getElementById("cross").classList.add("on"), 1600));
+}
+document.getElementById("go").onclick = run; run();
+</script></body></html>

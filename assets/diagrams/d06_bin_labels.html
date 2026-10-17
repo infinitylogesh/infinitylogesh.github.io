@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><title>Choosing bin labels</title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* The Ambient design system (vaan_db/site/public/assets/css/styles.css): cream canvas, dark-brown ink,
+   one orange accent. In these figures orange is our slot read, dark brown the vanilla baseline, taupe
+   neutral structure. */
+:root {
+  --bg:#fdf6f1; --bg-2:#f8ece4; --panel:#ffffff; --panel-2:#fbf1ea;
+  --ink-panel:#1c100b; --ink-panel-2:#2a170e; --on-ink:#fbeee6; --on-ink-muted:#bfa89c;
+  --ink:#1a110d; --ink2:#6b5850; --ink3:#9a877e; --rule:rgba(58,28,12,0.11); --rule-2:rgba(58,28,12,0.06); --dot:rgba(58,28,12,0.07);
+  --shadow:0 1px 2px rgba(58,28,12,0.05), 0 12px 32px -14px rgba(58,28,12,0.18);
+  --fast:#ff5a14; --fast-2:#ff7a2e; --fast-soft:#ffe5d8;   /* ours: the slot read */
+  --slow:#3a2013; --slow-soft:#efe2d9;                     /* the baseline: writing */
+  --accent:#a3836f; --accent-soft:#f3e7df;                 /* neutral structure (UI, targets, prefill) */
+  --gt:#1a110d;                                            /* reference marks: truth, boxes */
+}
+* { box-sizing:border-box; }
+html, body { margin:0; color:var(--ink); font:15px/1.6 "Inter",system-ui,sans-serif; -webkit-font-smoothing:antialiased;
+  background:radial-gradient(var(--dot) 1.2px, transparent 1.2px) -12px -12px / 24px 24px, var(--bg); }
+.fig { max-width:1000px; margin:0 auto; padding:22px 18px 24px; }
+.eyebrow { font:600 11.5px "Inter",sans-serif; letter-spacing:.26em; text-transform:uppercase; color:var(--fast); margin:0 0 8px; }
+.title { font:800 24px/1.12 "Inter Tight","Inter",sans-serif; letter-spacing:-.03em; margin:0 0 8px; text-wrap:balance; }
+.lede { color:var(--ink2); font-size:14.5px; margin:0 0 16px; max-width:52rem; }
+.cap { color:var(--ink3); font-size:12.5px; margin-top:12px; line-height:1.55; }
+.mono { font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+.label { font:500 10.5px "JetBrains Mono",monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--ink3); }
+.panel { background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:16px; box-shadow:var(--shadow); }
+.term { background:var(--ink-panel); color:var(--on-ink); border-radius:12px; padding:12px 14px; font:12.5px/1.7 "JetBrains Mono",monospace;
+  box-shadow:0 18px 36px -22px rgba(42,23,14,.6); }
+.term .dim { color:var(--on-ink-muted); } .term .o { color:var(--fast-2); font-weight:600; }
+.row { display:flex; gap:16px; flex-wrap:wrap; } .row > * { flex:1 1 300px; min-width:0; }
+.controls { display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:14px 0 0; font-size:13.5px; color:var(--ink2); }
+button { font:600 13.5px "Inter",sans-serif; background:var(--panel); color:var(--ink); border:1px solid var(--rule); border-radius:10px;
+  padding:7px 14px; cursor:pointer; box-shadow:var(--shadow); transition:border-color .15s, transform .12s; }
+button:hover { border-color:rgba(255,90,20,.45); } button:active { transform:translateY(1px); }
+input[type=range], input[type=checkbox] { accent-color:var(--fast); }
+.fast { color:var(--fast); } .slow { color:var(--slow); } .k { font-weight:600; }
+.big { font:800 30px/1 "Inter Tight",sans-serif; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+canvas { display:block; max-width:100%; }
+@keyframes dashflow { to { stroke-dashoffset:-26; } }
+.flow { stroke-dasharray:6 7; stroke-linecap:round; animation:dashflow 1.4s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .flow { animation:none; } }
+</style>
+<script>
+/* embedded as an iframe: tell the host page our height, so it can size the frame to fit at any width */
+(function () { if (parent === window) return;
+  // the body's own height (not the document's, which is at least the frame's current height and could only grow)
+  const post = () => document.body && parent.postMessage({ diagramHeight: Math.ceil(document.body.getBoundingClientRect().height) + 2 }, "*");
+  addEventListener("load", post); addEventListener("resize", post);
+  addEventListener("DOMContentLoaded", () => new ResizeObserver(post).observe(document.body)); })();
+</script>
+
+<style>
+.cards { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px; }
+@media (max-width:860px) { .cards { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+@media (max-width:520px) { .cards { grid-template-columns:1fr; } }
+.card { background:var(--panel); border:1px solid var(--rule); border-radius:16px; padding:14px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:8px; }
+.card h4 { margin:0; font:800 16px "Inter Tight",sans-serif; letter-spacing:-.02em; } .card .who { font-size:12px; color:var(--ink3); margin-top:-6px; }
+.labels { font-family:"JetBrains Mono",monospace; font-size:12px; line-height:1.8; color:var(--ink); display:flex; flex-wrap:wrap; gap:3px; }
+.labels span { background:var(--fast-soft); color:#c2410c; border:1px solid rgba(255,90,20,.18); border-radius:5px; padding:0 5px; }
+.labels .dim { color:var(--ink3); border-style:dashed; }
+.gauge { font-size:12px; color:var(--ink2); display:grid; grid-template-columns:1fr auto; gap:0 8px; } .gauge b { font-weight:600; color:var(--ink); font-size:11.5px; }
+.gauge .track { grid-column:1 / -1; height:7px; background:var(--rule); border-radius:4px; margin-top:3px; overflow:hidden; }
+.gauge .fillg { height:100%; background:var(--ink3); border-radius:4px; } .gauge .ok-fill { background:var(--fast); } .gauge .bad-fill { background:var(--slow); }
+.verdict { font-size:13px; font-weight:600; margin-top:auto; padding-top:6px; border-top:1px solid var(--rule); }
+.good { color:var(--fast); } .bad { color:var(--ink2); }
+.res { font-size:12.5px; color:var(--ink2); }
+</style></head><body><div class="fig">
+<p class="eyebrow">Figure 6</p><p class="title">Which tokens should the 256 bins be?</p>
+<p class="lede">Every bin needs its own single-token label, and the model has to learn that each label means a position. Two properties of the labels' embeddings go with the sets that learned: they are <b>distinct</b> (no near-duplicates), and they have some <b>built-in order</b> (neighbouring bins already a little alike).</p>
+<div class="cards">
+  <div class="card">
+    <h4>Ordinary words</h4><div class="who">256 common words, one token each</div>
+    <div class="labels"><span>apple</span><span>river</span><span>stone</span><span>cloud</span><span>pencil</span><span class="dim">…</span></div>
+    <div class="gauge"><span>near-duplicate pairs</span><b class="mono">0%</b><div class="track"><div class="fillg" style="width:0.8%"></div></div></div><div class="gauge"><span>built-in order</span><b class="mono">+0.007</b><div class="track"><div class="fillg bad-fill" style="width:5%"></div></div></div>
+    <div class="res">Unrelated words point in near-perpendicular directions (mean cosine 0.03): perfectly distinct, but with no order at all. Nothing in the embeddings says bin 117 sits next to 118, and each label has a meaning to unlearn.</div>
+    <div class="verdict bad">alone: never learned (0.6% of clicks)<br><span style="font-weight:500;color:var(--ink2)">with a coarse slot (arm A): 0.835</span></div>
+  </div>
+  <div class="card">
+    <h4>101 byte-like tokens</h4><div class="who">84 single characters + 17 two-letter tokens · arm B+ (the GPC-1 grid size)</div>
+    <div class="labels"><span>!</span><span>"</span><span>#</span><span>$</span><span>%</span><span class="dim">…</span><span>z</span><span>{</span><span>~</span></div>
+    <div class="gauge"><span>near-duplicate pairs</span><b class="mono">0%</b><div class="track"><div class="fillg" style="width:0.8%"></div></div></div><div class="gauge"><span>built-in order</span><b class="mono">+0.099</b><div class="track"><div class="fillg ok-fill" style="width:66%"></div></div></div>
+    <div class="res">Little meaning to unlearn. But 101 bins is coarse: ~13 px per bin on a 1,280-px screen.</div>
+    <div class="verdict good">clicks 0.867 · agent steps 0.605</div>
+  </div>
+  <div class="card">
+    <h4>256 byte-like tokens</h4><div class="who">84 characters + 172 two-letter tokens; the first 101 are B+'s · arm E</div>
+    <div class="labels"><span>!</span><span>"</span><span class="dim">…</span><span>~</span><span>ab</span><span>ac</span><span class="dim">…</span><span>gs</span></div>
+    <div class="gauge"><span>near-duplicate pairs</span><b class="mono">0%</b><div class="track"><div class="fillg" style="width:0.8%"></div></div></div><div class="gauge"><span>built-in order</span><b class="mono">+0.115</b><div class="track"><div class="fillg ok-fill" style="width:77%"></div></div></div>
+    <div class="res">Distinct (no near-duplicates; the closest pair is at cosine 0.83), some built-in order, little meaning to unlearn, and 256 bins: ~5 px per bin.</div>
+    <div class="verdict good">clicks 0.858 · agent steps 0.700 (best)</div>
+  </div>
+  <div class="card">
+    <h4>Byte-fallback tokens</h4><div class="who">&lt;0x00&gt; … &lt;0x7F&gt;: the tokenizer's raw bytes</div>
+    <div class="labels"><span>&lt;0x00&gt;</span><span>&lt;0x01&gt;</span><span class="dim">…</span><span>&lt;0x7F&gt;</span></div>
+    <div class="gauge"><span>near-duplicate pairs</span><b class="mono">74%</b><div class="track"><div class="fillg bad-fill" style="width:74%"></div></div></div><div class="gauge"><span>built-in order</span><b class="mono">+0.084</b><div class="track"><div class="fillg ok-fill" style="width:56%"></div></div></div>
+    <div class="res">Some order, but 74% of pairs are near-identical (cosine above 0.99): the model can hardly tell those labels apart.</div>
+    <div class="verdict bad">rejected before training</div>
+  </div>
+</div>
+<p class="cap">Measured on Gemma 4's embeddings (input and output are tied; <span class="mono">label_geometry.py</span>). <b>Near-duplicate pairs</b>: share of label pairs with cosine above 0.99. <b>Built-in order</b>: mean cosine between neighbouring bins minus that of random pairs (bar scale up to +0.15). Mean pairwise cosine alone does not separate the sets: words have the lowest (0.034) because unrelated words point in near-perpendicular directions in the high-dimensional embedding space, yet they failed. These properties go with what learned; we did not test them causally. Accuracy: ScreenSpot clicks (1,272) and held-out AGUVIS steps (200), joint training on identical data; the words-only result is from phase 1 (clicks only).</p>
+</div></body></html>
