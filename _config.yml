@@ -39,12 +39,14 @@ person:
   employer_url: https://www.blackbox.ai/
   image: https://github.com/infinitylogesh.png
   knows_about:
-    - Large language models
+    - Large Language Models
     - Multimodal AI
-    - Agentic systems
-    - High-performance ML inference
-    - Computer-use agents
-    - Video understanding
+    - Vision-Language Models
+    - Agentic AI
+    - Code Generation
+    - High-Performance LLM Inference
+    - Computer-Use Agents
+    - Video Understanding
   same_as:
     - https://www.linkedin.com/in/logeshkumaru
     - https://twitter.com/logesh_umapathi
