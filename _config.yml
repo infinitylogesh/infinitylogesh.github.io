@@ -14,7 +14,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Logesh Kumar Umapathi
-description: Welcome to my little place on the internet! Here I document my thoughts on Machine learning and NLP.
+seo_title: "Logesh Kumar Umapathi — Machine learning Engineer & Researcher | LLMs, Multimodal AI & Agents"
+description: "Logesh Kumar Umapathi is a machine learning engineer and researcher working on LLMs, multimodal AI, agentic systems and high-performance inference. Creator of open source Video Agent - Ambient; contributor to StarCoder and BigCode."
 home_title: Logesh Kumar Umapathi
 # baseurl: "/athena" # the subpath of your site, e.g. /blog
 url: "https://infinitylogesh.github.io" # the base hostname & protocol for your site
