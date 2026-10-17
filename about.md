@@ -1,6 +1,8 @@
 ---
 layout: home_page
 title: About
+seo_title: "About Logesh Kumar Umapathi - Machine learning Research Engineer at Blackbox.ai"
+description: "Logesh Kumar Umapathi is a machine learning research engineer working on LLMs, multimodal AI, agentic systems and high-performance inference.He has also worked on coding agents that achieved SoTA on coding benchmarks like SWE-Bench (verified and lite) and Nextjs Agents Eval. Contributor to StarCoder and BigCode. Creator of open source Video Agent - Ambient"
 profile_schema: true
 ---
 

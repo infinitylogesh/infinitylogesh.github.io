@@ -15,10 +15,10 @@
 # in the templates via {{ site.myvariable }}.
 title: Logesh Kumar Umapathi
 seo_title: "Logesh Kumar Umapathi — Machine learning Engineer & Researcher | LLMs, Multimodal AI & Agents"
-description: "Logesh Kumar Umapathi is a machine learning engineer and researcher working on LLMs, multimodal AI, agentic systems and high-performance inference. Creator of open source Video Agent - Ambient; contributor to StarCoder and BigCode."
+description: "Logesh Kumar Umapathi is a machine learning research engineer working on LLMs, multimodal AI, agentic systems and high-performance inference.He has also worked on coding agents that achieved SoTA on coding benchmarks like SWE-Bench (verified and lite) and Nextjs Agents Eval. Contributor to StarCoder and BigCode. Creator of open source Video Agent - Ambient"
 home_title: Logesh Kumar Umapathi
 # baseurl: "/athena" # the subpath of your site, e.g. /blog
-url: "https://infinitylogesh.github.io" # the base hostname & protocol for your site
+url: "https://logeshumapathi.com" # the base hostname & protocol for your site
 github_repo: athena # the GitHub repo name for your project
 github_username: infinitylogesh
 
